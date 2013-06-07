@@ -62,6 +62,16 @@ post "/new_stock" do
   end
 end
 
+post "/new_portfolio" do
+  @portfolio = Portfolio.new(params[:portfolio])
+
+  if @portfolio.save
+    redirect "/"
+  else
+    erb :new_portfolio
+  end
+end
+
 post "/save_portfolio/:portfolio_id" do
   @portfolio = Portfolio.find_by_id(params[:portfolio_id])
 

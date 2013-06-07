@@ -7,6 +7,7 @@ Edit a portfolio:
   <% Stock.all.each do |stock| %>
       <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
       <%= stock.symbol %>
+      <% end %>
 
 
   <button>Save</button>

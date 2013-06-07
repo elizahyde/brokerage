@@ -18,6 +18,9 @@ body p img {
 	padding: none;
 }
 
+li {
+	list-style: none;
+}
 /*a:link {
 	color:#F55B2C;
 	text-decoration: none;
