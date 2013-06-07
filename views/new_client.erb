@@ -1,0 +1,27 @@
+Add a new client:
+<form method="post" action="/new_client">
+  Client name:
+  <input type="text" name="client_name">
+  Expected retirement:
+  <input type="text" name="client_retirement">
+  Zip Code:
+  <input type="text" name="client_zipcode">
+
+
+<!-- Make a Portfolio at same time -->
+Add a new portfolio:
+
+  Portfolio type:
+  <input type="text" name="portfolio[sector]">
+
+  <% Stock.all.each do |stock| %>
+      <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
+      <%= stock.symbol %>
+      <br>
+    <% end %>
+
+
+
+
+  <button>Save</button>
+</form>

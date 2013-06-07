@@ -1,0 +1,31 @@
+name="foo"
+
+params[:foo]
+
+
+
+
+name="portfolio[name]"
+
+params[:portfolio][:name]
+
+
+
+name="portfolio[foo][hello]"
+
+
+
+
+portfolio = {
+  :name => 'whatever',
+  :client_id => 3
+}
+
+
+
+
+<% Portfolio.all.each do |portfolio| %>
+    <input type="checkbox" name="client[portfolio_ids][]" value="<%= portfolio.id %>">
+    <%= portfolio.sector %>
+    <br>
+  <% end %>

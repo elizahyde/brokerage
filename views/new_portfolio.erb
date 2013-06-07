@@ -1,0 +1,21 @@
+Add a new portfolio:
+<form method="post" action="/new_portfolio">
+  Portfolio type:
+  <input type="text" name="portfolio[sector]">
+
+  <% Stock.all.each do |stock| %>
+      <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
+      <%= stock.symbol %>
+      <br>
+    <% end %>
+
+  <select name="portfolio[client_id]">
+    <% Client.all.each do |client| %>
+      <option value="<%= client.id %>"><%= client.name %></option>
+    <% end %>
+  </select>
+
+
+
+  <button>Save Portfolio</button>
+</form>

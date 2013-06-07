@@ -26,3 +26,39 @@ end
 get "/new_portfolio" do
   erb :new_portfolio
 end
+
+post "/new_stock" do
+  @stock = Stock.new(params[:stock])
+
+  if @stock.save
+    redirect "/"
+  else
+    erb :new_stock
+  end
+end
+
+post "/new_portfolio" do
+  @portfolio = Portfolio.new(:sector => params[:portfolio][:sector], :client_id => params[:portfolio][:client_id])
+
+  if @portfolio.save
+    redirect "/"
+  else
+    erb :new_portfolio
+  end
+end
+
+
+post "/new_client" do
+  @client = Client.new(:name => params[:client_name],
+    :retirement => params[:client_retirement],
+    :zipcode => params[:client_zipcode]
+    )
+
+  if @client.save
+    @portfolio = Portfolio.create(:sector => params[:portfolio][:sector], :client_id => @client.id)
+
+    redirect "/"
+  else
+    erb :new_client
+  end
+end

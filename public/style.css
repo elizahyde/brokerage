@@ -1,0 +1,96 @@
+
+h1 {
+	color: white;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 18px;
+}
+
+h3 {
+	color: white;
+	margin-top: -25px;
+	font-family: 'Rambla', sans-serif;
+	margin-bottom: 20px;
+}
+
+body p img {
+	width: 25px;
+	margin: none;
+	padding: none;
+}
+
+/*a:link {
+	color:#F55B2C;
+	text-decoration: none;
+}
+a:visited {
+	color:#F55B2C;
+	text-decoration: none;
+}
+a:hover {
+	color:#616566;
+	text-decoration: none;
+}*/
+
+.content {
+	margin: auto;
+	padding-top: 30px;
+	color: #FFDE00;
+
+} 
+
+.content h1 {
+	color: white;
+}
+
+.content tr {
+	color: white;
+}
+
+.content a {
+	color: #FFDE00;
+}
+
+.content th {
+	color: #FFDE00;
+}
+
+.container {
+	background-color: gray;
+	width: 100%;
+	padding: 25px;
+	border-radius: 10px;
+	margin-top: 10px;
+	box-shadow: 5px 5px 10px #888888;
+}
+
+.container:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.about {
+	float: left;
+	margin: auto;
+	font-family: verdana;
+	color: white;
+	width: 375px;
+}
+/*.about a {
+	color: #4A7023;
+}*/
+
+.photo {
+	float: right;
+	
+}
+.photo img {
+	width: 250px;
+	border: 4px solid white;
+	border-radius: 7px;
+	box-shadow: 5px 5px 10px #888888;
+}
+
+.btn-info {
+	background-color: #FFDE00;
+}
