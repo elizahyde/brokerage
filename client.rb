@@ -1,5 +1,3 @@
 class Client < ActiveRecord::Base
-  def portfolios
-    has_many :portfolios
-  end
+  has_many :portfolios
 end

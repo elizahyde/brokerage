@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
+require "stock_quote"
 
 require_relative "db_info"
 
@@ -27,6 +28,30 @@ get "/new_portfolio" do
   erb :new_portfolio
 end
 
+get "/clients" do
+  @clients = Client.all
+  @portfolios = Portfolio.all
+  @stocks = Stock.all
+
+  #portfolio.sector if portfolio.client_id
+
+  erb :clients
+end
+
+get "/portfolios" do
+  @clients = Client.all
+  @portfolios = Portfolio.all
+  @stocks = Stock.all
+# <%= portfolio.stocks.map {|stock| stock.symbol }.join(", ") %>
+  erb :portfolios
+end
+
+get "/stocks" do
+  @stocks = Stock.all
+
+  erb :stocks
+end
+
 post "/new_stock" do
   @stock = Stock.new(params[:stock])
 
@@ -37,14 +62,19 @@ post "/new_stock" do
   end
 end
 
-post "/new_portfolio" do
-  @portfolio = Portfolio.new(:sector => params[:portfolio][:sector], :client_id => params[:portfolio][:client_id])
+post "/save_portfolio/:portfolio_id" do
+  @portfolio = Portfolio.find_by_id(params[:portfolio_id])
 
-  if @portfolio.save
+  if @portfolio.update_attributes(params[:portfolio])
     redirect "/"
   else
-    erb :new_portfolio
+    erb :edit_portfolio
   end
+end
+
+get "/edit_portfolio/:portfolio_id" do
+  @portfolio = Portfolio.find_by_id(params[:portfolio_id])
+  erb :edit_portfolio
 end
 
 
@@ -61,4 +91,10 @@ post "/new_client" do
   else
     erb :new_client
   end
+end
+
+
+get "/edit_client/:client_id" do
+  @client = Client.find_by_id(params[:client_id])
+  erb :edit_client
 end

@@ -29,3 +29,16 @@ portfolio = {
     <%= portfolio.sector %>
     <br>
   <% end %>
+
+
+
+  <!--
+
+
+
+
+    <% client.id == portfolio.client_id %>
+    <%= portfolio.sector %>
+    <% else %>
+    <% None %>
+    <% end %> -->

@@ -1,0 +1,11 @@
+<h1>Stocks</h3>
+<a href="/new_stock" class="btn btn-med btn-primary" type="button">New Stock</a><br><br>
+<ul>
+  <% @stocks.each do |stock| %>
+    <li>
+      <strong><%= stock.symbol %></strong>
+
+
+    </li>
+  <% end %>
+</ul>

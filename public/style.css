@@ -34,9 +34,9 @@ a:hover {
 .content {
 	margin: auto;
 	padding-top: 30px;
-	color: #FFDE00;
+	color: #CCCCCC;
 
-} 
+}
 
 .content h1 {
 	color: white;
@@ -47,11 +47,11 @@ a:hover {
 }
 
 .content a {
-	color: #FFDE00;
+	color: #CCCCCC;
 }
 
 .content th {
-	color: #FFDE00;
+	color: #CCCCCC;
 }
 
 .container {
@@ -82,7 +82,7 @@ a:hover {
 
 .photo {
 	float: right;
-	
+
 }
 .photo img {
 	width: 250px;
@@ -92,5 +92,7 @@ a:hover {
 }
 
 .btn-info {
-	background-color: #FFDE00;
+	background-color: #CCCCCC;
 }
+
+

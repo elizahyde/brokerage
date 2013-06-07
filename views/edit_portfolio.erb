@@ -1,0 +1,13 @@
+Edit a portfolio:
+<form method="post" action="/save_portfolio/<%= @portfolio.id %>">
+  Name:
+  <input type="text" name="portfolio[sector]" value="<%= @portfolio.sector %>">
+  <br>
+
+  <% Stock.all.each do |stock| %>
+      <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
+      <%= stock.symbol %>
+
+
+  <button>Save</button>
+</form>
