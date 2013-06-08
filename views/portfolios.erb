@@ -11,8 +11,9 @@
 <tr>
   <% @portfolios.each do |portfolio| %>
 <td><%= portfolio.sector %></td>
-<td><%= portfolio.client.name %></td>
+<td><%= portfolio.client.name if portfolio.client %></td>
 <td><%= portfolio.stocks.map {|stock| stock.symbol }.join(", ") %></td>
+<!--This link works now-->
 <td><a href="/edit_portfolio/<%= portfolio.id %>">Edit</a><td>
   </tr><% end %>
 </table>

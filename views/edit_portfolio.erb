@@ -1,14 +1,26 @@
-Edit a portfolio:
+Edit a new portfolio:
 <form method="post" action="/save_portfolio/<%= @portfolio.id %>">
-  Name:
+  Portfolio type:
   <input type="text" name="portfolio[sector]" value="<%= @portfolio.sector %>">
   <br>
-
+  <!--This prints a list of all the stocks with check boxes. The Value section
+  checks to see if a portfolio already has a stock in it and displays a check in the box if it does-->
   <% Stock.all.each do |stock| %>
-      <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
+      <input type="checkbox"
+      name="portfolio[stock_ids][]"
+      value="<%= stock.id %>"
+      <%= "checked" if @portfolio.stocks.include?(stock) %>>
       <%= stock.symbol %>
-      <% end %>
+      <br>
+    <% end %>
+  <!--This brings up a drop down menu of the clients. If one is already assigned, it brings up that person-->
+Client:
+  <select name="portfolio[client_id]">
+    <% Client.all.each do |client| %>
+      <option value="<%= client.id %>"><%= client.name %></option>
+    <% end %>
+  </select>
 
-
-  <button>Save</button>
+</br>
+  <button class="btn btn-small btn-primary">Save Portfolio</button>
 </form>

@@ -42,7 +42,7 @@ get "/portfolios" do
   @clients = Client.all
   @portfolios = Portfolio.all
   @stocks = Stock.all
-# <%= portfolio.stocks.map {|stock| stock.symbol }.join(", ") %>
+
   erb :portfolios
 end
 
@@ -56,7 +56,7 @@ post "/new_stock" do
   @stock = Stock.new(params[:stock])
 
   if @stock.save
-    redirect "/"
+    redirect "/stocks"
   else
     erb :new_stock
   end
@@ -66,7 +66,7 @@ post "/new_portfolio" do
   @portfolio = Portfolio.new(params[:portfolio])
 
   if @portfolio.save
-    redirect "/"
+    redirect "/portfolios"
   else
     erb :new_portfolio
   end
@@ -76,7 +76,7 @@ post "/save_portfolio/:portfolio_id" do
   @portfolio = Portfolio.find_by_id(params[:portfolio_id])
 
   if @portfolio.update_attributes(params[:portfolio])
-    redirect "/"
+    redirect "/portfolios"
   else
     erb :edit_portfolio
   end
@@ -89,15 +89,21 @@ end
 
 
 post "/new_client" do
-  @client = Client.new(:name => params[:client_name],
-    :retirement => params[:client_retirement],
-    :zipcode => params[:client_zipcode]
-    )
+  @client = Client.new(params[:client])
+  @portfolio = Portfolio.new(params[:portfolio])
 
   if @client.save
-    @portfolio = Portfolio.create(:sector => params[:portfolio][:sector], :client_id => @client.id)
 
-    redirect "/"
+    @portfolio = Portfolio.find_or_create_by_sector(params[:portfolio][:sector])
+    # This adds client ID to portfolio table.
+    @portfolio.update_attributes(:client_id => @client.id)
+    #Of This makes the stocks save! Then it broke stuff so I had to add the other lines.
+    @portfolio.update_attributes(params[:portfolio])
+    #this declares everything for portfolio (oh wait this is above. might be able to delete)
+    @portfolio = Portfolio.new(params[:portfolio])
+
+
+    redirect "/clients"
   else
     erb :new_client
   end

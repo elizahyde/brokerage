@@ -1,25 +1,27 @@
+
+<!--Basic New client info form-->
 <h4>Add a new client:</h4>
 <form method="post" action="/new_client">
   <ul>
     <li>Client name:
-  <input type="text" name="client_name"></li>
+  <input type="text" name="client[name]"></li>
   <li>Expected retirement:
-  <input type="text" name="client_retirement"></li>
+  <input type="text" name="client[retirement]"></li>
   <li>Zip Code:
-  <input type="text" name="client_zipcode"></li>
+  <input type="text" name="client[zipcode]"></li>
 </ul>
 
-<!-- Make a Portfolio at same time -->
+<!-- Make a Portfolio at same time. This is all the same from New Portfolio -->
 <h4>Add a new portfolio:</h4>
-
-  Portfolio type:
   <input type="text" name="portfolio[sector]">
 <br>
   <% Stock.all.each do |stock| %>
-      <input type="checkbox" name="portfolio[stock_ids][]" value="<%= stock.id %>">
-      <%= stock.symbol %>
-      <br>
-    <% end %>
+        <input type="checkbox"
+        name="portfolio[stock_ids][]"
+        value="<%= stock.id %>">
+        <%= stock.symbol %>
+        <br>
+      <% end %>
 
   <button class="btn btn-small btn-primary">Save All</button>
 </form>
